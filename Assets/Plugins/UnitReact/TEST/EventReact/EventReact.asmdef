@@ -1,0 +1,19 @@
+{
+    "name": "EventReact",
+    "rootNamespace": "Lucky38.TestReact.EventBusDemo",
+    "references": [
+        "UniTask",
+        "Zenject",
+        "UnitReact",
+        "Unity.TextMeshPro"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
