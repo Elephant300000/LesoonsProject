@@ -18,7 +18,7 @@ public class MovementPlayerInput : IInitializable, IDisposable
     {
         _onMove.canceled -= OnStopedMove;
         _onMove.started -= OnStartedMove;
-        _onMove.performed -= OnJump;
+        _onJump.performed -= OnJump;
     }
 
     public void Initialize()

@@ -1,8 +1,9 @@
+using Lucky38.UnitReact.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public interface IPlayer 
 {
-    void Move(Vector2 vector2);
-    void Jump();
+    void MoveAxis(Vector2 vector2);
+    void Jump(Unit unit);
 }
