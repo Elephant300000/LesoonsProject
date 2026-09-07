@@ -1,3 +1,5 @@
+using Sasha19.Enums;
+using Sasha19.GameBootstrapper;
 using UnityEngine;
 using Zenject;
 
@@ -7,7 +9,7 @@ namespace Sasha19.Register
     {
         public override void InstallBindings()
         {
-            Container.BindInterfacesAndSelfTo<CoreGameBootstrapper>().FromNew().AsSingle().NonLazy();
+            CoreGameBotsrappInstaller.Install(Container);
             Container.Bind<IBootstrappStep>().WithId(SystemsCoreStepType.FoundationStep).To<SaveSystemTest>().FromNew().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<GameStepsRegister>().FromNew().AsSingle();
             Debug.Log("s");

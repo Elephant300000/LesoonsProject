@@ -1,19 +1,16 @@
+using Sasha19.Enums;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
-
-internal class CoreGameBootstrapper : CoreGameBootstrapperBase
+namespace Sasha19.GameBootstrapper
 {
-    public CoreGameBootstrapper([Inject(Id = SystemsCoreStepType.FoundationStep)] List<IBootstrappStep> FoundationStep,
-    [Inject(Id = SystemsCoreStepType.GlobalInitStep)] List<IBootstrappStep> GlobalInitStep) : base(FoundationStep, GlobalInitStep)
+    internal class CoreGameBootstrapper : CoreGameBootstrapperBase
     {
-        Debug.Log("Game");
+        public CoreGameBootstrapper([Inject(Id = SystemsCoreStepType.FoundationStep)] List<IBootstrappStep> FoundationStep,
+        [Inject(Id = SystemsCoreStepType.GlobalInitStep)] List<IBootstrappStep> GlobalInitStep) : base(FoundationStep, GlobalInitStep)
+        {
+            Debug.Log("Game");
+        }
     }
-}
-public enum SystemsCoreStepType
-{
-    GlobalInitStep,
-    FoundationStep,
-    ServiseStep,
-    LoadStep
+
 }

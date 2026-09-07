@@ -1,0 +1,19 @@
+{
+    "name": "Botstrapp",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e6cb5f8a96d8b224390a58adb86c13bc",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:9230fd7607075ba4d87211ff7c615ae9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

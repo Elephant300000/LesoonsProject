@@ -1,5 +1,5 @@
+using Sasha19.GameBootstrapper;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using Zenject;
 internal class SceneGameBootstrapper : CoreGameBootstrapperBase

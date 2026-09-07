@@ -1,3 +1,4 @@
+using Sasha19.DataInterfases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,9 +60,7 @@ public class GameStepsRegister : IGameStepsRegister
     }
 }
 
-public interface IStepMarker
-{
-}
+
 
 public interface IGameStepsRegister
 {
