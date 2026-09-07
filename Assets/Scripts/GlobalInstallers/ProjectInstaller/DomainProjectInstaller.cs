@@ -1,12 +1,16 @@
 using UnityEngine;
 using Zenject;
 
-public class DomainProjectInstaller : MonoInstaller<DomainProjectInstaller>
+namespace Sasha19.Register
 {
-    public override void InstallBindings()
+    public class DomainProjectInstaller : MonoInstaller<DomainProjectInstaller>
     {
-        Container.BindInterfacesAndSelfTo<CoreGameBootstrapper>().FromNew().AsSingle().NonLazy();
-        Container.Bind<IBootstrappStep>().WithId(SystemsCoreStepType.FoundationStep).To<SaveSystemTest>().FromNew().AsSingle().NonLazy();        
-        Debug.Log("s");
+        public override void InstallBindings()
+        {
+            Container.BindInterfacesAndSelfTo<CoreGameBootstrapper>().FromNew().AsSingle().NonLazy();
+            Container.Bind<IBootstrappStep>().WithId(SystemsCoreStepType.FoundationStep).To<SaveSystemTest>().FromNew().AsSingle().NonLazy();
+            Container.BindInterfacesAndSelfTo<GameStepsRegister>().FromNew().AsSingle();
+            Debug.Log("s");
+        }
     }
 }
