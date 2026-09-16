@@ -33,7 +33,7 @@ public class GameStepsRegister : IGameStepsRegister
     {
         var steps = new List<IStepMarker>();
         if (step != null && !_steps.TryGetValue(typeof(TStep), out steps))
-        {
+        { 
             steps = new List<IStepMarker>();
             _steps[typeof(TStep)] = steps;
         }

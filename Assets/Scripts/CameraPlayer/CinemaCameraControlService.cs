@@ -1,11 +1,14 @@
+using Lucky38.UnitReact.Core;
+using System;
 using UnityEngine;
+using Zenject;
 
 namespace Lucky38.MyCamera
 {
     /// <summary>
     /// Owns zoom / rotate / move for the cinema orbit camera.
     /// </summary>
-    public sealed class CinemaCameraControlService : ICinemaCameraControl
+    public sealed class CinemaCameraControlService : ICinemaCameraControl, IInitializable, IDisposable
     {
         private ICinemaCameraRig _rig;
         private Transform _lookTarget;
@@ -20,6 +23,7 @@ namespace Lucky38.MyCamera
         private float _zoomVelocity;
         private bool _collisionHit;
         private bool _lookEnabled = true;
+        private CompositeDisposable _subscribers;
 
         public void Bind(ICinemaCameraRig rig)
         {
@@ -86,14 +90,6 @@ namespace Lucky38.MyCamera
             {
                 return;
             }
-
-            if (_lookEnabled)
-            {
-                TickRotationInput();
-                TickZoomInput();
-            }
-
-            // Ray direction is derived in ResolveCollision / TickMotion from current rotation.
         }
 
         public void TickMotion(float deltaTime)
@@ -156,22 +152,22 @@ namespace Lucky38.MyCamera
             return Vector3.SignedAngle(cameraZ, characterZ, Vector3.up);
         }
 
-        private void TickRotationInput()
+        private void TickRotationInput(Vector2 vector)
         {
+
             var settings = _rig.Settings;
-            _mouseX = 0;//Input.GetAxis("Mouse X") * settings.mouseSensitivity;
-            _mouseY = 0;//  Input.GetAxis("Mouse Y") * settings.mouseSensitivity;
+            _mouseX += vector.x * settings.mouseSensitivity;
+            _mouseY += vector.y * settings.mouseSensitivity;
             _mouseY = Mathf.Clamp(_mouseY, settings.minPitchAngle, settings.maxPitchAngle);
             _rotationInput = new Vector3(_mouseY, _mouseX, 0f);
         }
 
-        private void TickZoomInput()
+        private void TickZoomInput(Vector2 zoom)
         {
             var settings = _rig.Settings;
-            var scroll = 0;//Input.GetAxis("Mouse ScrollWheel");
-            if (Mathf.Abs(scroll) > 0.01f)
+            if (Mathf.Abs(zoom.y) > 0.01f)
             {
-                _originZoom -= scroll * settings.zoomSpeed;
+                _originZoom -= zoom.y * settings.zoomSpeed;
                 _originZoom = Mathf.Clamp(_originZoom, settings.minDistance, settings.maxDistance);
             }
 
@@ -189,6 +185,17 @@ namespace Lucky38.MyCamera
             }
 
             return eulerX;
+        }
+
+        public void Initialize()
+        {
+            MessageBroker.Receive<Vector2>().Subscribe(TickRotationInput).AddTo(_subscribers);
+            MessageBroker.Receive<Vector2>().Subscribe(TickZoomInput).AddTo(_subscribers);
+        }
+
+        public void Dispose()
+        {
+            _subscribers.Dispose();
         }
     }
 }

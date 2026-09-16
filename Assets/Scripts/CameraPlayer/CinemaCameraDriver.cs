@@ -3,9 +3,7 @@ using Zenject;
 
 namespace Lucky38.MyCamera
 {
-    /// <summary>
-    /// Thin scene facade: ticks control + collision. Serialized fields keep Unity inspector values.
-    /// </summary>
+
     [RequireComponent(typeof(CinemaCameraCollision))]
     public sealed class CinemaCameraDriver : MonoBehaviour, IPlayerCinemaCamera, ICinemaCameraRig
     {

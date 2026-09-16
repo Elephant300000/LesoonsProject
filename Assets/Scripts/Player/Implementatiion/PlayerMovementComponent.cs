@@ -14,16 +14,16 @@ public class PlayerMovementComponent : MonoBehaviour, IPlayer, IInitializable, I
     private Vector3 _moveAxis;
     private bool _isInCollision;
 
-    public void Dispose()
-    {
-        _subscribers.Dispose();
-    }
 
     public void Initialize()
     {
         _myRb = GetComponent<Rigidbody>();
         MessageBroker.Receive<Vector2>().Subscribe(MoveAxis).AddTo(_subscribers);
         MessageBroker.Receive<Unit>().Gate(0.3f).Subscribe(Jump).AddTo(_subscribers);
+    }
+    public void Dispose()
+    {
+        _subscribers.Dispose();
     }
 
     public void Jump(Unit unit)
@@ -37,6 +37,10 @@ public class PlayerMovementComponent : MonoBehaviour, IPlayer, IInitializable, I
     private void FixedUpdate()
     {
         Move(_moveAxis);
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Debug.Log("ddh");
+        }
     }
 
     public void Move(Vector3 vector3)
