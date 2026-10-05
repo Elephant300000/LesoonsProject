@@ -6,6 +6,10 @@ using Zenject;
 public class StatDisplayWidget : MonoBehaviour, IStatDisplayWidget
 {
     private Image _statBar;
+    [SerializeField]
+    private TypeOfStat typeOfStat;
+
+    TypeOfStat IStatDisplayWidget.typeOfStat => typeOfStat;
 
     private void Awake()
     {
@@ -20,5 +24,12 @@ public class StatDisplayWidget : MonoBehaviour, IStatDisplayWidget
 }
 public interface IStatDisplayWidget
 {
+    TypeOfStat typeOfStat { get; }
     void UpdateValue(PlayerData playerData);
+}
+public enum TypeOfStat
+{
+    Hp,
+    Stamina,
+    Mp
 }
