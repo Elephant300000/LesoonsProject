@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 108360101}
   - component: {fileID: 108360103}
   - component: {fileID: 108360102}
+  - component: {fileID: 108360104}
   m_Layer: 5
   m_Name: HpHud_IMG
   m_TagString: Untagged
@@ -334,6 +335,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 108360100}
   m_CullTransparentMesh: 1
+--- !u!114 &108360104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108360100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b704e9d7e98167409177dffe93ec942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HpBar
 --- !u!1001 &238356312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1387,6 +1400,7 @@ GameObject:
   - component: {fileID: 1016087625}
   - component: {fileID: 1016087626}
   - component: {fileID: 1016087629}
+  - component: {fileID: 1016087630}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -1560,6 +1574,18 @@ MonoBehaviour:
   m_DefaultActionMap: Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 330585549}
+--- !u!114 &1016087630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016087620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c94655adff8cc544a3bcae0d939bf91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerComponent
 --- !u!1 &1177196494
 GameObject:
   m_ObjectHideFlags: 0
