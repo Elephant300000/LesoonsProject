@@ -23,7 +23,7 @@ namespace Lucky38.MyCamera
         private float _zoomVelocity;
         private bool _collisionHit;
         private bool _lookEnabled = true;
-        private CompositeDisposable _subscribers;
+        private CompositeDisposable _subscribers = new();
 
         public void Bind(ICinemaCameraRig rig)
         {
@@ -152,22 +152,22 @@ namespace Lucky38.MyCamera
             return Vector3.SignedAngle(cameraZ, characterZ, Vector3.up);
         }
 
-        private void TickRotationInput(Vector2 vector)
+        private void TickRotationInput(DeltaEventData data)
         {
 
             var settings = _rig.Settings;
-            _mouseX += vector.x * settings.mouseSensitivity;
-            _mouseY += vector.y * settings.mouseSensitivity;
+            _mouseX += data.DeltaMouse.x * settings.mouseSensitivity;
+            _mouseY -= data.DeltaMouse.y * settings.mouseSensitivity;
             _mouseY = Mathf.Clamp(_mouseY, settings.minPitchAngle, settings.maxPitchAngle);
             _rotationInput = new Vector3(_mouseY, _mouseX, 0f);
         }
 
-        private void TickZoomInput(Vector2 zoom)
+        private void TickZoomInput(ZoomEventData data)
         {
             var settings = _rig.Settings;
-            if (Mathf.Abs(zoom.y) > 0.01f)
+            if (Mathf.Abs(data.Zoom.y) > 0.01f)
             {
-                _originZoom -= zoom.y * settings.zoomSpeed;
+                _originZoom -= data.Zoom.y * settings.zoomSpeed;
                 _originZoom = Mathf.Clamp(_originZoom, settings.minDistance, settings.maxDistance);
             }
 
@@ -189,8 +189,8 @@ namespace Lucky38.MyCamera
 
         public void Initialize()
         {
-            MessageBroker.Receive<Vector2>().Subscribe(TickRotationInput).AddTo(_subscribers);
-            MessageBroker.Receive<Vector2>().Subscribe(TickZoomInput).AddTo(_subscribers);
+            MessageBroker.Receive<DeltaEventData>().Subscribe(TickRotationInput).AddTo(_subscribers);
+            MessageBroker.Receive<ZoomEventData>().Subscribe(TickZoomInput).AddTo(_subscribers);
         }
 
         public void Dispose()

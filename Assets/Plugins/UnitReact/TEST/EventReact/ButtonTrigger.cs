@@ -25,7 +25,7 @@ namespace Lucky38.TestReact.EventBusDemo
             if (bt != null)
             {
                 bt.onClick.RemoveAllListeners();
-             }
+            }
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Lucky38.MyCamera
         [SerializeField] private float zoomSpeed = 5f;
 
         [Tooltip("Min camera distance.")]
-        [Range(0.5f, 2f)]
+        [Range(0f, 2f)]
         [SerializeField] private float minDistance = 1.5f;
 
         [Tooltip("Max camera distance.")]
@@ -91,7 +91,7 @@ namespace Lucky38.MyCamera
 
         private void LateUpdate()
         {
-            _control?.TickMotion(Time.smoothDeltaTime);
+            _control?.TickMotion(Time.deltaTime);
         }
 
         private void FixedUpdate()

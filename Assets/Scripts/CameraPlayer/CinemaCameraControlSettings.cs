@@ -29,7 +29,7 @@ namespace Lucky38.MyCamera
         public float zoomSpeed = 5f;
 
         [Tooltip("Min camera distance.")]
-        [Range(0.5f, 2f)]
+        [Range(0f, 2f)]
         public float minDistance = 1.5f;
 
         [Tooltip("Max camera distance.")]

@@ -13,42 +13,55 @@ public class CameraInput : IInitializable, IDisposable
     {
         _playerInput = playerInput;
     }
-
-
     public void Initialize()
     {
         _onRotate = _playerInput.actions["Look"];
         _onScroll = _playerInput.actions["Scroll"];
-        _onRotate.started += OnStartOfRotatte;
-        _onRotate.canceled += OnStopOfRotatte;
-        _onScroll.started += OnStartOfScroll;
+        _onScroll.started += OnScroll;
         _onScroll.canceled += OnStopScroll;
+        _onRotate.performed += OnRotate;
     }
 
     public void Dispose()
     {
-        _onRotate.started -= OnStartOfRotatte;
-        _onRotate.canceled -= OnStopOfRotatte;
-        _onScroll.started -= OnStartOfScroll;
+        _onRotate.performed -= OnRotate;
+        _onScroll.started -= OnScroll;
         _onScroll.canceled -= OnStopScroll;
-
     }
 
-    private void OnStartOfRotatte(InputAction.CallbackContext ctx)
-    {
-        MessageBroker.Publish(ctx.ReadValue<Vector2>());
-    }
-    private void OnStopOfRotatte(InputAction.CallbackContext ctx)
-    {
-        MessageBroker.Publish(Vector2.zero);
-    }
-    private void OnStartOfScroll(InputAction.CallbackContext ctx)
-    {
-        MessageBroker.Publish(ctx.ReadValue<Vector2>());
-    }
     private void OnStopScroll(InputAction.CallbackContext ctx)
     {
-        MessageBroker.Publish(Vector2.zero);
+        MessageBroker.Publish(new ZoomEventData(Vector2.zero));
+    }
+    private void OnScroll(InputAction.CallbackContext ctx)
+    {
+        MessageBroker.Publish(new ZoomEventData(ctx.ReadValue<Vector2>()));
+    }
+    private void OnRotate(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
+        {
+            MessageBroker.Publish(new DeltaEventData(ctx.ReadValue<Vector2>()));
+        }
+        else MessageBroker.Publish(new DeltaEventData(Vector2.zero));
+    }
+    
+}
+public struct ZoomEventData
+{
+    public ZoomEventData(Vector2 zoom)
+    {
+        Zoom = zoom;
     }
 
+    public Vector2 Zoom { get;}
+}
+public struct DeltaEventData
+{
+    public DeltaEventData(Vector2 scroll)
+    {
+        DeltaMouse = scroll;
+    }
+
+    public Vector2 DeltaMouse { get;}
 }

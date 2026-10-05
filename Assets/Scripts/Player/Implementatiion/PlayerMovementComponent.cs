@@ -37,16 +37,11 @@ public class PlayerMovementComponent : MonoBehaviour, IPlayer, IInitializable, I
     private void FixedUpdate()
     {
         Move(_moveAxis);
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("ddh");
-        }
     }
 
     public void Move(Vector3 vector3)
     {
         _myRb.AddForce(vector3 * _speed, ForceMode.Force);
-        Debug.Log("Move");
     }
     public void MoveAxis(Vector2 axis)
     {
