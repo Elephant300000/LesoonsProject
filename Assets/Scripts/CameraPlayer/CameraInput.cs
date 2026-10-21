@@ -21,7 +21,10 @@ public class CameraInput : IInitializable, IDisposable
         _onScroll.canceled += OnStopScroll;
         _onRotate.performed += OnRotate;
     }
-
+    Vector2 GetDelta()
+    {
+        return Vector2.zero;
+    }
     public void Dispose()
     {
         _onRotate.performed -= OnRotate;

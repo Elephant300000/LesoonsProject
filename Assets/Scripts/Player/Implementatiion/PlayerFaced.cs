@@ -8,4 +8,3 @@ public class PlayerFaced : IPlayerFaced
         reactivePlayerData.Value = newPlayerData;
     }
 }
-

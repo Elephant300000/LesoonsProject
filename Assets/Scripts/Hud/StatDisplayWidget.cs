@@ -16,16 +16,16 @@ public class StatDisplayWidget : MonoBehaviour, IStatDisplayWidget
         _statBar = GetComponent<Image>();
     }
 
-    void IStatDisplayWidget.UpdateValue(PlayerData playerData)
+    void IStatDisplayWidget.UpdateValue(float value,float maxValue)
     {
-        if(playerData.MaxHp <= 0) playerData.MaxHp = 1;
-        _statBar.fillAmount = playerData.CurrentHp / playerData.MaxHp;
+        if(maxValue <= 0) maxValue = 1;
+        _statBar.fillAmount = value / maxValue;
     }
 }
 public interface IStatDisplayWidget
 {
     TypeOfStat typeOfStat { get; }
-    void UpdateValue(PlayerData playerData);
+    void UpdateValue(float value, float maxValue);
 }
 public enum TypeOfStat
 {
