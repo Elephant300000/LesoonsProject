@@ -19,12 +19,12 @@ public struct PlayerData
         Rotation = rotation;
         StatsState = statsState;
     }
-    public PlayerData With(uint? playerId = null,
+    public PlayerData With(StatsState? statsState = null,
+        uint ? playerId = null,
         uint? idConfige = null,
         Vector2? positionV2 = null,
         Vector3? positionV3 = null,
-        Quaternion? rotation = null,
-        StatsState? statsState = null)
+        Quaternion? rotation = null)
     {
         return new(
             PlayerId,

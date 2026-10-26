@@ -8,5 +8,8 @@ public class PlayerInstaller : Installer<PlayerInstaller>
     {
         Container.BindInterfacesAndSelfTo<MovementPlayerInput>().FromNew().AsSingle().NonLazy();
         Container.BindInterfacesAndSelfTo<PlayerMovementComponent>().FromComponentInHierarchy().AsSingle();
+        Container.BindInterfacesAndSelfTo<PlayerFacedProvaider>().FromNew().AsSingle();
+        Container.BindInterfacesAndSelfTo<StatDisplayWidget>().FromComponentInHierarchy().AsSingle();
+        Container.BindInterfacesAndSelfTo<PlayerUIObserver>().FromNew().AsSingle().NonLazy();
     }
 }

@@ -1,4 +1,5 @@
 using Sasha19.GameBootstrapper;
+using Sasha19.Register;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -16,6 +17,6 @@ public class FirstLocationSceneInstaller : MonoInstaller
         SceneBotsrappInstaller.Install(Container);
         Container.Bind<PlayerInput>().FromInstance(inputActions).AsSingle();
         Container.Bind<IBootstrappStep>().WithId(SystemsGameStepType.PostLoadStep).To<SpawnerTestStep>().FromComponentInHierarchy().AsSingle();
-        
+
     }
 }

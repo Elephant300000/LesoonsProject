@@ -12,7 +12,6 @@ namespace Sasha19.Register
             CoreGameBotsrappInstaller.Install(Container);
             Container.Bind<IBootstrappStep>().WithId(SystemsCoreStepType.FoundationStep).To<SaveSystemTest>().FromNew().AsSingle().NonLazy();
             Container.BindInterfacesAndSelfTo<GameStepsRegister>().FromNew().AsSingle();
-            Debug.Log("s");
         }
     }
 }

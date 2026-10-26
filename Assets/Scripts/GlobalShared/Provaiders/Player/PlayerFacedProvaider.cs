@@ -1,7 +1,7 @@
 using Lucky38.UnitReact.Core;
 using UnityEngine;
 
-public class PlayerFacedProvaider : MonoBehaviour, IPlayerFacedProvaiderSet, IPlayerFacedProvaiderGet
+public class PlayerFacedProvaider : IPlayerFacedProvaiderSet, IPlayerFacedProvaiderGet
 {
     public IPlayerFaced PlayerFaced;
 

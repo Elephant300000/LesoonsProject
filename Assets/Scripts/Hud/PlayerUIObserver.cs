@@ -4,7 +4,16 @@ using Zenject;
 
 public class PlayerUIObserver : IInitializable, IDisposable
 {
+    public PlayerUIObserver(IPlayerFacedProvaiderGet facedProvaider, IStatDisplayWidget statDisplayWidget)
+    {
+        FacedProvaider = facedProvaider;
+        this.statDisplayWidget = statDisplayWidget;
+    }
+
+
     public IPlayerFacedProvaiderGet FacedProvaider;
+
+
     public IStatDisplayWidget statDisplayWidget;
     public CompositeDisposable compositeDisposable = new();
 

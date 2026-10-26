@@ -3,7 +3,7 @@ using Zenject;
 
 public class PlayerComponent : MonoBehaviour
 {
-    public PlayerFaced _playerFaced {  get; private set; }
+    public PlayerModel _playerFaced {  get; private set; }
     [Inject]
     public void Construct()
     {
