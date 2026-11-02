@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HpEventMediator : PooledSyncEventSubject
 {
-    private PlayerMovementComponent player;// ссылка на компонент игрока PlayerFaced
+  //  private PlayerFaced player;// ссылка на компонент игрока PlayerFaced
     //PlayerFaced.playerdata.hpProperty
     private void OnUpdateHp(float newHp)// float
     {

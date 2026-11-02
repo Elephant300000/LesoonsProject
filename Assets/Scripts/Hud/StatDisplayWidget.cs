@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-public class StatDisplayWidget : MonoBehaviour, IStatDisplayWidget
+public class    StatDisplayWidget : MonoBehaviour, IStatDisplayWidget
 {
     private Image _statBar;
     [SerializeField]

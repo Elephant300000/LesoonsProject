@@ -12,5 +12,4 @@ namespace Sasha19.Enums
         ServiseStep,
         LoadStep
     }
-
 }
