@@ -6,6 +6,6 @@ public class PlayerInstaller : Installer<PlayerInstaller>
     {
         Container.BindInterfacesAndSelfTo<PlayerFacedProvaider>().FromNew().AsSingle();
         Container.BindInterfacesAndSelfTo<StatDisplayWidget>().FromComponentInHierarchy().AsSingle();
-
+   
     }
 }
