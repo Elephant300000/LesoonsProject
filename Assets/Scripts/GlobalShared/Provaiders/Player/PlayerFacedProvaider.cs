@@ -1,30 +1,26 @@
 using Lucky38.UnitReact.Core;
+using Sasha19.Entity.MyPlayer;
 using UnityEngine;
 
 public class PlayerFacedProvaider : IPlayerFacedProvaiderSet, IPlayerFacedProvaiderGet
 {
-    public IPlayerFaced PlayerFaced;
+    public IPlayerModel PlayerFaced;
 
-    public void PlayerFacedSet(IPlayerFaced playerFaced)
+    public void PlayerFacedSet(IPlayerModel playerFaced)
     {
         PlayerFaced = playerFaced;
     }
 
-    public IPlayerFaced PlayerFasedGet()
+    public IPlayerModel PlayerFasedGet()
     {
         return PlayerFaced;
     }
 }
 public interface IPlayerFacedProvaiderGet
 {
-    IPlayerFaced PlayerFasedGet();
+    IPlayerModel PlayerFasedGet();
 }
 public interface IPlayerFacedProvaiderSet
 {
-    void PlayerFacedSet(IPlayerFaced playerFaced);
-}
-public interface IPlayerFaced
-{
-    ReactiveProperty<PlayerData> reactivePlayerData { get; }
-    void UpdatePlayerData(PlayerData newPlayerData);
+    void PlayerFacedSet(IPlayerModel playerFaced);
 }
